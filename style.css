@@ -1,0 +1,245 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #87CEEB 0%, #98FB98 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.game-container {
+    position: relative;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    max-width: 90vw;
+    max-height: 90vh;
+}
+
+.ui-overlay {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    pointer-events: none;
+}
+
+.score-display {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px 20px;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+    color: #333;
+    display: flex;
+    gap: 20px;
+}
+
+.score-display span {
+    font-size: 18px;
+}
+
+.power-meter-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.power-meter {
+    width: 200px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid #ddd;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.power-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4CAF50, #8BC34A, #FFEB3B, #FF9800, #F44336);
+    width: 0%;
+    transition: width 0.1s ease;
+    border-radius: 8px;
+}
+
+.power-label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2px 8px;
+    border-radius: 10px;
+}
+
+#gameCanvas {
+    display: block;
+    border-radius: 15px;
+    background: #87CEEB;
+    max-width: 100%;
+    height: auto;
+}
+
+.instructions {
+    text-align: center;
+    margin-top: 15px;
+    color: #666;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.instructions p {
+    margin: 5px 0;
+}
+
+.game-over {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    border-radius: 20px;
+}
+
+.game-over-content {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: popIn 0.5s ease-out;
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.game-over h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 32px;
+}
+
+.game-over p {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 20px;
+}
+
+#playAgainBtn {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 25px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#playAgainBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #45a049, #4CAF50);
+}
+
+#playAgainBtn:active {
+    transform: translateY(0);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .game-container {
+        padding: 10px;
+        margin: 10px;
+    }
+    
+    .ui-overlay {
+        top: 10px;
+        left: 10px;
+        right: 10px;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .score-display {
+        padding: 8px 15px;
+        font-size: 14px;
+        gap: 15px;
+    }
+    
+    .power-meter {
+        width: 150px;
+        height: 15px;
+    }
+    
+    .power-label {
+        font-size: 12px;
+    }
+    
+    .instructions {
+        font-size: 12px;
+        margin-top: 10px;
+    }
+    
+    .game-over-content {
+        padding: 30px 20px;
+        margin: 20px;
+    }
+    
+    .game-over h2 {
+        font-size: 24px;
+    }
+    
+    .game-over p {
+        font-size: 16px;
+    }
+    
+    #playAgainBtn {
+        padding: 12px 24px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .score-display {
+        flex-direction: column;
+        gap: 5px;
+        text-align: center;
+    }
+    
+    .power-meter {
+        width: 120px;
+    }
+}

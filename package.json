@@ -1,0 +1,31 @@
+{
+  "name": "shrimp-catcher",
+  "version": "1.0.0",
+  "description": "A fun 2D fishing game where you catch shrimps in a peaceful pond",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "dev": "python -m http.server 8000",
+    "build": "echo 'No build step required for static HTML'",
+    "deploy": "vercel --prod"
+  },
+  "keywords": [
+    "game",
+    "fishing",
+    "shrimp",
+    "canvas",
+    "javascript",
+    "html5",
+    "css3"
+  ],
+  "author": "KendineCrypto",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KendineCrypto/Shrimp-Catcher.git"
+  },
+  "homepage": "https://shrimp-catcher.vercel.app",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

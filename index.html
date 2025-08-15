@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shrimp Catcher - Pond Adventure</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="ui-overlay">
+            <div class="score-display">
+                <span>Score: <span id="score">0</span></span>
+                <span>Time: <span id="timer">60</span>s</span>
+            </div>
+            <div class="power-meter-container">
+                <div class="power-meter">
+                    <div id="power-fill" class="power-fill"></div>
+                </div>
+                <div class="power-label">Power</div>
+            </div>
+        </div>
+        
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+        
+        <div class="instructions">
+            <p>Hold SPACE to charge power, release to cast!</p>
+            <p>Press SPACE again to reel in your catch!</p>
+        </div>
+        
+        <div id="gameOver" class="game-over hidden">
+            <div class="game-over-content">
+                <h2>Game Over!</h2>
+                <p>Final Score: <span id="finalScore">0</span></p>
+                <button id="playAgainBtn">Play Again</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
