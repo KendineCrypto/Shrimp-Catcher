@@ -1,6 +1,19 @@
 // Game Canvas and Context
 const canvas = document.getElementById('gameCanvas');
+if (!canvas) {
+    console.error('Canvas element not found!');
+    document.body.innerHTML = '<h1>Error: Canvas not found</h1>';
+} else {
+    console.log('Canvas found successfully');
+}
+
 const ctx = canvas.getContext('2d');
+if (!ctx) {
+    console.error('Canvas context not available!');
+    document.body.innerHTML = '<h1>Error: Canvas context not available</h1>';
+} else {
+    console.log('Canvas context created successfully');
+}
 
 // Image loading system
 const gameImages = {
@@ -1213,10 +1226,23 @@ document.getElementById('playAgainBtn').addEventListener('click', () => {
 
 // Initialize and start the game
 function startGame() {
-    initAudio();
-    initGame();
-    gameLoop();
-    setInterval(updateTimer, 1000);
+    console.log('Starting game...');
+    
+    if (!canvas || !ctx) {
+        console.error('Cannot start game: Canvas not available');
+        return;
+    }
+    
+    try {
+        initAudio();
+        initGame();
+        gameLoop();
+        setInterval(updateTimer, 1000);
+        console.log('Game started successfully');
+    } catch (error) {
+        console.error('Error starting game:', error);
+        document.body.innerHTML = '<h1>Error starting game: ' + error.message + '</h1>';
+    }
 }
 
 // Start the game when page loads
